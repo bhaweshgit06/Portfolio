@@ -93,9 +93,10 @@ export default {
 
   cursor: pointer;
 
-  box-shadow:
-    0 0 24px rgba(0, 220, 130, 0.25),
-    0 0 48px rgba(54, 228, 218, 0.15);
+    box-shadow:
+      0 0 80px rgba(0, 220, 130, 0.3),
+      0 0 160px rgba(54, 228, 218, 0.2);
+
 
   transition:
     width 0.45s cubic-bezier(.22,1,.36,1),
@@ -110,8 +111,8 @@ export default {
 .route-switcher::before {
   content: "";
   position: absolute;
-  width: 420px;
-  height: 420px;
+  width: 520px;
+  height: 620px;
 
   left: 50%;
   top: 50%;
@@ -130,8 +131,8 @@ export default {
   content: "";
   position: absolute;
 
-  width: 420px;
-  height: 420px;
+  width: 520px;
+  height: 620px;
 
   left: 50%;
   top: 50%;

@@ -19,6 +19,7 @@ export function getIntroData() {
       },
       title: "building",
       subtitle: "SOFTWARE EXPERIENCES",
+      expertise: "Full-Stack Developer",
       description:
         "Hi, I’m Bhawesh — a software developer who loves turning complex problems into scalable, elegant, and user-focused solutions.",
     },

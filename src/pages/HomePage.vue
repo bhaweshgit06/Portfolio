@@ -4,19 +4,23 @@
       <div class="content">
       <h2 class="accent">{{ source.about.title }}</h2>
       <h1 class="title">{{ source.about.subtitle }}</h1>
-
+      <div class="expertise">
+        {{ source.about.expertise }}
+      </div>
       <div class="subtitle">
         {{ source.about.description }}
       </div>
 
-      <div class="cta">
+      <!-- <div class="cta">
         <span v-for="value in source.about.skills" class="tag">{{ value }}{{ value !== source.about.skills[source.about.skills.length - 1] ? ' · ' : '' }}</span>
-      </div>
+      </div> -->
+      <ContactActions />
     </div>
     </div>
   </div>
 </template>
 <script>
+import ContactActions from '@/components/ContactActions.vue';
 import { getIntroData } from '@/data/IntroData';
 
 export default {
@@ -35,6 +39,9 @@ export default {
     //
 
   },
+  components: {
+    ContactActions,
+  },
   created() {
     console.log('Home component created');
   },
@@ -48,7 +55,6 @@ export default {
 .home-container {
   min-height: 100vh;
   background: #f7f1e6;
-  padding: 40px 60px;
   /* display: flex;
   flex-direction: column; */
   /* align-items: center; */
@@ -56,6 +62,13 @@ export default {
   font-family: 'Inter', sans-serif;
 }
 
+.expertise {
+  margin-top: 20px;
+  font-size: 28px;
+  max-width: 600px;
+  color: grey;
+  font-weight: 500;
+}
 
 .template-label {
   font-size: 14px;
@@ -78,13 +91,12 @@ export default {
 .accent {
   font-family: 'Pacifico', cursive;
   font-size: 56px;
-  color: #b23a48;
+  color: #00987b;
   margin-bottom: -20px;
 }
 
 .about{
   text-align: center;
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,7 +120,7 @@ export default {
 .cta {
   margin-top: 25px;
   display: inline-block;
-  border: 2px solid #000;
+  border: 2px solid #b0dfd8;
   padding: 10px 18px;
   font-size: 14px;
   font-weight: 600;
