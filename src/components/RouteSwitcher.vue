@@ -1,6 +1,12 @@
 <template>
   <div class="route-switcher-component">
+     
     <div class="route-switcher">
+      <img
+        :src="activeRoute?.icon"
+        class="icon active-icon"
+        :alt="activeRoute?.name"
+      />
       <button
         v-for="route in options"
         :key="route.name"
@@ -27,8 +33,17 @@ export default {
     };
   },
   computed: {
-    options () {
-      return getActiveRouterData();
+    options() {
+      const routes = getActiveRouterData();
+      const activeRoute = routes.find(route => this.$route.path === route.path);
+      if (activeRoute) {
+      routes.splice(routes.indexOf(activeRoute), 1);
+      routes.splice(Math.floor(routes.length / 2), 0, activeRoute);
+      }
+      return routes;
+    },
+    activeRoute() {
+      return this.options.find(route => this.$route.path === route.path);
     }
   },
   methods: {
@@ -38,8 +53,6 @@ export default {
     }
   }
 };
-
-
 </script>
 
 <style scoped>
@@ -48,6 +61,10 @@ export default {
    ================================ */
 .route-switcher-component {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
@@ -60,7 +77,7 @@ export default {
 .route-switcher {
   position: relative;
 
-  width: 60px;
+  width: 80px;
   height: 30px;
 
   background: rgba(11, 11, 11, 0.9);
@@ -84,7 +101,7 @@ export default {
     width 0.45s cubic-bezier(.22,1,.36,1),
     height 0.45s cubic-bezier(.22,1,.36,1),
     padding 0.45s cubic-bezier(.22,1,.36,1),
-    box-shadow 0.35s ease;
+    box-shadow 0.25s ease;
 }
 
 /* ================================
@@ -100,14 +117,6 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
 
-  /* background: radial-gradient(
-    circle,
-    rgba(160, 255, 235, 0.55) 0%,
-    rgba(160, 255, 235, 0.35) 25%,
-    rgba(160, 255, 235, 0.18) 45%,
-    rgba(160, 255, 235, 0.08) 60%,
-    transparent 70%
-  ); */
 
   filter: blur(80px);
   opacity: 0;
@@ -148,6 +157,21 @@ export default {
 
 .route-switcher-component:hover::before {
   opacity: 1;
+}
+.active-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  opacity: 1;
+  transition: opacity 0.2s ease;
+
+  z-index: 2;
+}
+
+.route-switcher:hover .active-icon {
+  opacity: 0;
 }
 
 
@@ -232,6 +256,5 @@ export default {
   width: 28px;
   height: 18px;
   pointer-events: none;
-  opacity: 0; /* hidden by default */
 }
 </style>

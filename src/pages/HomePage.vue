@@ -2,24 +2,23 @@
   <div class="home-container">
     <div class="about">
       <div class="content">
-      <h2 class="accent">building</h2>
-      <h1 class="title">SOFTWARE</h1>
-      <h1 class="title">EXPERIENCES</h1>
+      <h2 class="accent">{{ source.about.title }}</h2>
+      <h1 class="title">{{ source.about.subtitle }}</h1>
 
       <div class="subtitle">
-        Hi, I’m <strong>Bhawesh</strong> — a software developer who loves
-        turning complex problems into scalable, elegant, and user-focused solutions.
+        {{ source.about.description }}
       </div>
 
       <div class="cta">
-        <span class="tag">Vue.js · JavaScript · Backend · Android</span>
+        <span v-for="value in source.about.skills" class="tag">{{ value }}{{ value !== source.about.skills[source.about.skills.length - 1] ? ' · ' : '' }}</span>
       </div>
     </div>
     </div>
-    
   </div>
 </template>
 <script>
+import { getIntroData } from '@/data/IntroData';
+
 export default {
   name: 'HomeView',
   data() {
@@ -28,7 +27,9 @@ export default {
     };
   },
   computed: {
-    //
+    source() {
+      return getIntroData();
+    }
   },
   methods: {
     //
@@ -106,14 +107,17 @@ export default {
 /* Tag */
 .cta {
   margin-top: 25px;
-}
-
-.tag {
   display: inline-block;
   border: 2px solid #000;
   padding: 10px 18px;
   font-size: 14px;
   font-weight: 600;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0px 0px 0px 4px;
+  border-radius: 4px;
 }
 </style>
 

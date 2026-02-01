@@ -1,7 +1,7 @@
 <template>
     <div class="experience-container">
         <div class="experience-header">
-            <h1>Experience</h1>
+            <h1>EXPERIENCE</h1>
             <p>My professional journey and projects</p>
         </div>
 
@@ -63,7 +63,6 @@ export default {
 .experience-header h1 {
     font-size: 3rem;
     margin-bottom: 10px;
-    color: #333;
 }
 
 .experience-header p {
