@@ -1,6 +1,14 @@
-export function getIntroData() {
+export function getPortFolioInfo() {
   return {
     about: {
+      contact: {
+        name: "Bhawesh",
+        email: "bhaweshagrawal0@gmail.com",
+        phone: "+1-555-123-4567",
+        location: "Bangalore, India",
+        github: "https://github.com/bhaweshgit06",
+        linkedin: "https://www.linkedin.com/in/bhawesh-agarwal-30489325b/",
+      },
       summary:
         "Passionate software developer with expertise in frontend technologies, particularly Vue.js and TypeScript. Experienced in building scalable web applications and improving user experience.",
       skills: [

@@ -11,7 +11,7 @@
         v-for="route in options"
         :key="route.name"
         class="route-btn"
-        @click="go(route.path)"
+        @click="handleAction(route.action)"
       >
         <!-- SVGs must be rendered as images -->
         <img :src="route.icon" class="icon" :alt="route.name" />
@@ -47,9 +47,26 @@ export default {
     }
   },
   methods: {
-    go(path) {
-      if(!this.$router) return;
-      this.$router.push(path);
+    handleAction(action) {
+      // "SCROLL",  "NAVIGATE", "NONE", "NUDGE", "ROUTE"
+      if (action === "scroll") {
+        const targetId = this.activeRoute?.id;
+        if (targetId) {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      } else if (action === "navigate") {
+        this.$router.push(this.activeRoute?.path || "/");
+      } else if (action === "nudge") {
+        // Implement nudge logic here (e.g., a quick animation or visual feedback)
+        console.log("Nudge action triggered for", this.activeRoute?.name);
+      } else if (action === "route") {
+        this.$router.push(this.activeRoute?.path || "/");
+      }else {
+        console.log("No action defined for", this.activeRoute?.name);
+      }
     }
   }
 };
@@ -93,10 +110,9 @@ export default {
 
   cursor: pointer;
 
-    box-shadow:
-      0 0 80px rgba(0, 220, 130, 0.3),
-      0 0 160px rgba(54, 228, 218, 0.2);
-
+  box-shadow:
+    0 0 24px rgba(0, 220, 130, 0.25),
+    0 0 48px rgba(54, 228, 218, 0.15);
 
   transition:
     width 0.45s cubic-bezier(.22,1,.36,1),

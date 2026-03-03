@@ -7,10 +7,59 @@ import ContactIcon from "@/assets/icons/contact.svg";
 
 export function getActiveRouterData() {
   return [
-    { name: "Home", path: "/", icon: HomeIcon},
-    { name: "About", path: "/about", icon: UserIcon },
-    { name: "Experience", path: "/experience", icon: ExperienceIcon },
-    { name: "Projects", path: "/projects", icon: ProjectsIcon },
-    { name: "Contact", path: "/contact", icon: ContactIcon },
+    {
+      name: "Home",
+      path: "/",
+      icon: HomeIcon,
+      id: "home-container",
+      url: "",
+      type: "section",
+      action: "scroll", // "SCROLL",  "NAVIGATE", "NONE", "NUDGE", "ROUTE"
+    },
+    {
+      name: "About",
+      path: "/about",
+      icon: UserIcon,
+      id: "about-container",
+      url: "",
+      type: "about",
+      action: "scroll", // "SCROLL",  "NAVIGATE", "NONE", "NUDGE", "ROUTE"
+    },
+    {
+      name: "Experience",
+      path: "/experience",
+      icon: ExperienceIcon,
+      id: "experience-container",
+      url: "",
+      type: "section",
+      action: "scroll", // "SCROLL",  "NAVIGATE", "NONE", "NUDGE", "ROUTE"
+    },
+    {
+      name: "Projects",
+      path: "/projects",
+      icon: ProjectsIcon,
+      id: "projects-container",
+      url: "",
+      type: "section",
+      action: "scroll", // "SCROLL",  "NAVIGATE", "NONE", "NUDGE", "ROUTE"
+    },
+    {
+      name: "Contact",
+      path: "/contact",
+      icon: ContactIcon,
+      id: "contact-container",
+      url: "",
+      type: "section",
+      action: "scroll", // "SCROLL",  "NAVIGATE", "NONE", "NUDGE", "ROUTE"
+    },
+    // {
+    //   name: "Blog",
+    //   path: "/blog",
+    //   icon: ContactIcon,
+    //   id: "blog-container",
+    //   url: "",
+    //   type: "section",
+    //   action: "NAVIGATE", // "SCROLL",  "NAVIGATE", "NONE", "NUDGE", "ROUTE"
+    // },
   ];
 }

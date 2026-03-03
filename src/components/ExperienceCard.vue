@@ -90,22 +90,6 @@ export default {
     margin: 0 auto;
 }
 
-.experience-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.experience-header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.experience-header p {
-    font-size: 1.2rem;
-    color: #666;
-}
-
 .experience-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
